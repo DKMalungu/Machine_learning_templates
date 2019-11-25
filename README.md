@@ -37,3 +37,20 @@ The Purpose of this project is to create machine learning templates that are eas
      x = independent Variable (Matrix of Features)
      m = The Slope of the graph
      b = constant (The point where the line closses the x axies
+     
+#### 2.1.2 Multiple Linear Regression
+  Assumptions of Linear Regression:
+    1. Lineaity
+    1. Heteroscedasiticity
+    1. Multivariate normality
+    1. Muticollinearity
+   Dummy Variable Trap - its a scenario in which two or more variabe are highly correlated
+                         i.e one varable can be predited from the other
+     
+     Method of Building a mutiple linear regression model
+     1. All in case - it a scenario where you include all the varable in the model
+     1. Backward Elimination - Its a stepwise regresion approch, that begins with full set of variables from the dataset from the model find a reduced model that best explains the data.
+     1. Forward Selection - Involves starting with no variables in the model testing the addition on each variable using a chosen model and evaluating the impact of the added column on the overal accuracy of the model 
+     1. Bidirectional - Its a combination of forward selection and backward selection 
+     
+     Note: All the mothodes will be implemented in template and the diffrent approches expained here in detail
