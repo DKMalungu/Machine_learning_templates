@@ -60,7 +60,7 @@ Question:
 """
 
 # Importing dataset into pyhton
-file_path = '/content/cereals.csv'
+file_path = './cereals.csv'
 dataset = pd.read_csv(file_path)
 
 # Displaying the dataset as is:
@@ -71,7 +71,29 @@ print(dataset)
 dataset = dataset.drop('Cereal',axis=1)
 print(dataset)
 
-dataset.dtypes
+# Visualizing the mean
+dataset_viz = dataset.drop(['Type','Manufacturer'],axis=1)
+plt.figure(figsize=[25,25])
+dataset_viz.plot(kind='box')
+plt.show()
+
+# Number of cereals produced by each Manufactures
+print('Frequency Chart of Manufacturer and Number of Cereals produced\n',dataset_cereals['Manufacturer'].value_counts(dropna=False))
+dataset_cereals['Manufacturer'].value_counts(dropna=False).plot(kind='bar')
+plt.title('Bar Graph of Manufacturer')
+plt.xlabel('Maunfacturer')
+
+#Number of Cereals of each type 
+print('Frequency Chart of type and Number of Cereals produced\n',dataset_cereals['Type'].value_counts(dropna=False))
+dataset_cereals['Type'].value_counts(dropna=False).plot(kind='bar')
+plt.title('Bar Graph of Type of Cereal')
+plt.xlabel('Type')
+
+#Number of Cereals of each shelf 
+print('Frequency Chart of Shelf and Number of Cereals produced\n',dataset_cereals['Shelf'].value_counts(dropna=False))
+dataset_cereals['Shelf'].value_counts(dropna=False).plot(kind='bar')
+plt.title('Bar Graph of Shelf and Number of Cereals')
+plt.xlabel('Shelf')
 
 # Amount of Protein, Carbohydrates and Fat for Each Cereals Hue = Type
 g = sbn.PairGrid(dataset[['Protein','Carbohydrates','Fat','Type']],hue='Type',)
@@ -226,3 +248,14 @@ ax.set_xticklabels(
     rotation=45,
     horizontalalignment='right'
 )
+
+# Visualising the line of Best fit (Potassium vs Fiber)
+plt.figure(figsize=[20,10])
+x=dataset_cereals['Potassium']
+y=dataset_cereals['Fiber']
+plt.scatter('Potassium','Fiber',data=dataset_cereals)
+plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)),color='green')
+plt.xticks(rotation=90)
+plt.xlabel('Potassium')
+plt.ylabel('Fiber')
+plt.show()
