@@ -71,7 +71,11 @@ print(dataset)
 dataset = dataset.drop('Cereal',axis=1)
 print(dataset)
 
-dataset.dtypes
+# Visualizing the mean
+dataset_viz = dataset.drop(['Type','Manufacturer'],axis=1)
+plt.figure(figsize=[25,25])
+dataset_viz.plot(kind='box')
+plt.show()
 
 # Number of cereals produced by each Manufactures
 print('Frequency Chart of Manufacturer and Number of Cereals produced\n',dataset_cereals['Manufacturer'].value_counts(dropna=False))
