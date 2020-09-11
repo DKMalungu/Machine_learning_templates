@@ -43,7 +43,33 @@ Data will always be dirty or have inconsistencies hence it important ti develop 
             It means the data missing is related to some observed data. To understand the reason for the missing data by checking the data gathering process
             further and try to understand why the information is missing. There is a distinct relationship between propensity of a value to be missing and it's value 
             The data we don't have is related to factors that we didn't account for or completely don't know
-       
+            
+    Mathematical Definition:
+    
+    _y_ = response Vector
+    
+    X = N <sub>x</sub> _p_ (some of which are missing values)
+    
+    X <sub>obs</sub> = The observed entries in X
+    
+    Z = (_y_, X)
+    
+    Z<sub>obs</sub> = (_y_, X<sub>obs</sub>)
+    
+    R = indicator matrix with _ij_ entry 1
+    
+    if X<sub>_ij_</sub> is missing and zero otherwise the data is said to be missing at random (MAR) if the distribution of R depends on the data Z
+    only through Z<sub>obs</sub>
+    
+    Pr(R|Z,θ) = Pr(R|Z<sub>obs</sub>, θ)
+    
+    where:
+            θ are any parameters in the distribution R
+            
+    Data are said to be missing completely at random (MCAR) if the distribution of R doesn't depend on the observed or missing data
+    
+    Pr(R|Z,θ) = Pr(R|θ)
+           
     They are many methods of filling cells with missing values some of the methods are as follows:
 
         * Ignore the Cells with missing values - This includes just dropping columns or rows that contain missing values. This strategy may
